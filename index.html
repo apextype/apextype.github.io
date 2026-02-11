@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexType — Crafting Premium Mobile Experiences</title>
+    <meta name="description" content="ApexType is an independent game studio crafting premium word puzzle games and mobile experiences.">
+    <meta name="keywords" content="ApexType, mobile games, word puzzle, Alphabrew, indie game studio">
+    <meta property="og:title" content="ApexType — Crafting Premium Mobile Experiences">
+    <meta property="og:description" content="Independent game studio building the next generation of word puzzle games.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://apextype.com">
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --teal: #00D9FF;
+            --blue: #0066FF;
+            --cyan-glow: rgba(0, 217, 255, 0.15);
+            --dark-bg: #000000;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.55);
+            --text-tertiary: rgba(255, 255, 255, 0.3);
+            --gradient: linear-gradient(135deg, var(--teal), var(--blue));
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ══════════ NOISE OVERLAY ══════════ */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ══════════ GRID BACKGROUND ══════════ */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ══════════ NAVIGATION ══════════ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid var(--card-border);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 3rem;
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .nav-brand span {
+            font-weight: 700;
+            font-size: 1.25rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ══════════ HERO SECTION ══════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        /* Radial glow */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.08) 0%, rgba(0, 102, 255, 0.04) 40%, transparent 70%);
+            pointer-events: none;
+            animation: pulse-glow 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
+            50% { opacity: 1; transform: translate(-50%, -55%) scale(1.15); }
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite, fade-in-up 1s ease-out;
+            filter: drop-shadow(0 0 40px rgba(0, 217, 255, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            animation: fade-in-up 1s ease-out 0.2s both;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            animation: fade-in-up 1s ease-out 0.4s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            animation: fade-in-up 1s ease-out 0.6s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            animation: fade-in-up 1s ease-out 0.8s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: var(--gradient);
+            color: #000;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-tertiary);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            animation: fade-in 1s ease-out 1.2s both;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--teal), transparent);
+            animation: scroll-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-pulse {
+            0%, 100% { opacity: 0.3; height: 40px; }
+            50% { opacity: 1; height: 55px; }
+        }
+
+        /* ══════════ SECTION BASE ══════════ */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 3rem;
+        }
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--teal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.1s;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .section-desc.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ══════════ ABOUT / STATS ══════════ */
+        .about {
+            border-top: 1px solid var(--card-border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card:nth-child(2) { transition-delay: 0.1s; }
+        .stat-card:nth-child(3) { transition-delay: 0.2s; }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stat-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ══════════ GAMES SECTION ══════════ */
+        .games {
+            border-top: 1px solid var(--card-border);
+        }
+
+        .game-card {
+            margin-top: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem;
+            border-radius: 24px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .game-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .game-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .game-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .game-tiles {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            perspective: 800px;
+        }
+
+        .tile {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            animation: tile-pop 0.5s ease-out both;
+            transition: transform 0.2s ease;
+        }
+
+        .tile:hover {
+            transform: scale(1.1) rotateX(-5deg);
+        }
+
+        .tile.correct {
+            background: linear-gradient(135deg, #00c9a7, #00d9ff);
+            color: #000;
+        }
+
+        .tile.present {
+            background: linear-gradient(135deg, #f0b429, #f7c948);
+            color: #000;
+        }
+
+        .tile.absent {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .tile.empty {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        @keyframes tile-pop {
+            from { opacity: 0; transform: scale(0.5) rotateY(90deg); }
+            to { opacity: 1; transform: scale(1) rotateY(0deg); }
+        }
+
+        .game-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--teal);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .game-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .game-info p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .game-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature-tag {
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .notify-form input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .notify-form input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .notify-form input:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        /* ══════════ TECH SECTION ══════════ */
+        .tech {
+            border-top: 1px solid var(--card-border);
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .tech-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tech-item:nth-child(2) { transition-delay: 0.1s; }
+        .tech-item:nth-child(3) { transition-delay: 0.2s; }
+        .tech-item:nth-child(4) { transition-delay: 0.3s; }
+        .tech-item:nth-child(5) { transition-delay: 0.4s; }
+
+        .tech-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            background: var(--gradient);
+        }
+
+        .tech-item span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ══════════ FOOTER ══════════ */
+        footer {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 3rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-left img {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+        }
+
+        .footer-left span {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+
+        .social-links a:hover {
+            color: var(--teal);
+        }
+
+        /* ══════════ CURSOR GLOW ══════════ */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+
+        /* ══════════ MOBILE ══════════ */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .game-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .game-visual {
+                order: -1;
+                min-height: 200px;
+            }
+
+            .tile {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .notify-form {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-stack {
+                gap: 1.5rem;
+            }
+
+            .cursor-glow {
+                display: none;
+            }
+        }
+
+        /* ══════════ SELECTION ══════════ */
+        ::selection {
+            background: rgba(0, 217, 255, 0.3);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <a href="#" class="nav-brand">
+            <img src="logo.png" alt="ApexType">
+            <span>ApexType</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#tech">Stack</a></li>
+            <li><a href="mailto:hello@apextype.com">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="logo.png" alt="ApexType Logo" class="hero-logo">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Building something new
+        </div>
+        <h1>Crafting Premium<br><span class="gradient-text">Mobile Experiences</span></h1>
+        <p>We're an independent studio building the next generation of word puzzle games. Smart, beautiful, and designed to challenge your mind.</p>
+        <div class="hero-cta">
+            <a href="#games" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Explore Games
+            </a>
+            <a href="mailto:hello@apextype.com" class="btn-secondary">
+                Get in Touch
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-label animate">// WHO WE ARE</div>
+            <h2 class="section-title animate">Built for players<br>who love words</h2>
+            <p class="section-desc animate">ApexType is where language meets gameplay. We craft word puzzle experiences that are as satisfying to play as they are beautiful to look at.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card animate">
+                    <div class="stat-icon">🎯</div>
+                    <h3>Precision Design</h3>
+                    <p>Every puzzle is hand-tuned for the perfect balance between challenge and satisfaction.</p>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-icon">🌍</div>
+                    <h3>Multilingual</h3>
+                    <p>Games built from the ground up to support Turkish, English, and more languages to come.</p>
+                </div>
+                <div class="stat-card animate">
+                    <div class="stat-icon">✨</div>
+                    <h3>Premium Quality</h3>
+                    <p>No clutter, no dark patterns. Just clean, polished experiences that respect your time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="games" id="games">
+        <div class="section-container">
+            <div class="section-label animate">// OUR GAMES</div>
+            <h2 class="section-title animate">Coming Soon</h2>
+            <p class="section-desc animate">Our debut title is in development. Be the first to know when it launches.</p>
+
+            <div class="game-card animate">
+                <div class="game-visual">
+                    <div class="game-tiles" id="gameTiles">
+                        <!-- Tiles will be generated by JS -->
+                    </div>
+                </div>
+                <div class="game-info">
+                    <div class="game-tag">
+                        <span class="dot"></span>
+                        In Development
+                    </div>
+                    <h3>Alphabrew</h3>
+                    <p>A fresh take on word puzzles. Brew words from letter tiles, discover hidden combinations, and climb the ranks. Strategic, addictive, and endlessly replayable.</p>
+                    <div class="game-features">
+                        <span class="feature-tag">Word Puzzle</span>
+                        <span class="feature-tag">Turkish & English</span>
+                        <span class="feature-tag">Daily Challenge</span>
+                        <span class="feature-tag">Leaderboards</span>
+                        <span class="feature-tag">Offline Play</span>
+                    </div>
+                    <div class="notify-form">
+                        <input type="email" placeholder="your@email.com" id="emailInput">
+                        <button class="btn-primary" onclick="handleNotify()">Notify Me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH -->
+    <section class="tech" id="tech">
+        <div class="section-container">
+            <div class="section-label animate">// BUILT WITH</div>
+            <h2 class="section-title animate">Modern Stack</h2>
+            <p class="section-desc animate">Built with the latest technologies for performance, reliability, and beautiful cross-platform experiences.</p>
+
+            <div class="tech-stack">
+                <div class="tech-item animate">
+                    <div class="tech-dot"></div>
+                    <span>Flutter</span>
+                </div>
+                <div class="tech-item animate">
+                    <div class="tech-dot"></div>
+                    <span>Firebase</span>
+                </div>
+                <div class="tech-item animate">
+                    <div class="tech-dot"></div>
+                    <span>Dart</span>
+                </div>
+                <div class="tech-item animate">
+                    <div class="tech-dot"></div>
+                    <span>iOS & Android</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <img src="logo.png" alt="ApexType">
+                <span>© 2026 ApexType. All rights reserved.</span>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/ApexTypeApp" target="_blank">X / Twitter</a>
+                <a href="https://instagram.com/apextypeapp" target="_blank">Instagram</a>
+                <a href="https://github.com/apextype" target="_blank">GitHub</a>
+                <a href="mailto:hello@apextype.com">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ══════════ CURSOR GLOW ══════════
+        const cursorGlow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // ══════════ NAV SCROLL ══════════
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ══════════ SCROLL ANIMATIONS ══════════
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+        // ══════════ GAME TILES ══════════
+        const tileData = [
+            { letter: 'A', type: 'correct' },
+            { letter: 'L', type: 'present' },
+            { letter: 'P', type: 'correct' },
+            { letter: 'H', type: 'absent' },
+            { letter: 'A', type: 'correct' },
+
+            { letter: 'B', type: 'correct' },
+            { letter: 'R', type: 'correct' },
+            { letter: 'E', type: 'present' },
+            { letter: 'W', type: 'correct' },
+            { letter: 'S', type: 'absent' },
+
+            { letter: 'W', type: 'absent' },
+            { letter: 'O', type: 'correct' },
+            { letter: 'R', type: 'correct' },
+            { letter: 'D', type: 'present' },
+            { letter: 'S', type: 'correct' },
+
+            { letter: '', type: 'empty' },
+            { letter: '', type: 'empty' },
+            { letter: '', type: 'empty' },
+            { letter: '', type: 'empty' },
+            { letter: '', type: 'empty' },
+        ];
+
+        const tilesContainer = document.getElementById('gameTiles');
+        tileData.forEach((tile, i) => {
+            const el = document.createElement('div');
+            el.className = `tile ${tile.type}`;
+            el.textContent = tile.letter;
+            el.style.animationDelay = `${1.5 + i * 0.06}s`;
+            tilesContainer.appendChild(el);
+        });
+
+        // ══════════ NOTIFY ══════════
+        function handleNotify() {
+            const input = document.getElementById('emailInput');
+            const email = input.value.trim();
+            if (email && email.includes('@')) {
+                const btn = document.querySelector('.notify-form .btn-primary');
+                btn.textContent = '✓ Subscribed!';
+                btn.style.background = 'linear-gradient(135deg, #00c9a7, #00d9ff)';
+                input.value = '';
+                setTimeout(() => {
+                    btn.innerHTML = 'Notify Me';
+                    btn.style.background = '';
+                }, 3000);
+            }
+        }
+
+        document.getElementById('emailInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleNotify();
+        });
+    </script>
+</body>
+</html>
