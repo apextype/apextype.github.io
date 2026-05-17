@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabrew - Yardım ve Destek / Help and Support</title>
+    <meta name="description" content="Alphabrew sık sorulan sorular, yardım ve destek / Frequently asked questions, help and support">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a2e;
+            background: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+        .nav-link {
+            display: inline-block;
+            margin: 6px 8px;
+            color: #7c3aed;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .lang-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .lang-btn {
+            padding: 8px 24px;
+            border: 2px solid #7c3aed;
+            border-radius: 24px;
+            background: white;
+            color: #7c3aed;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .lang-btn.active {
+            background: #7c3aed;
+            color: white;
+        }
+        .contact-card {
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: white;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .contact-card h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .contact-card a {
+            color: white;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .category {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .category h2 {
+            font-size: 20px;
+            color: #7c3aed;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+        .faq {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .faq:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .faq h3 {
+            font-size: 16px;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .faq h3::before {
+            content: "▸";
+            color: #7c3aed;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+        .faq p, .faq li {
+            color: #444;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .faq ol, .faq ul {
+            padding-left: 24px;
+            margin-bottom: 8px;
+        }
+        .faq a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+        .faq a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            padding: 32px;
+            color: #999;
+            font-size: 13px;
+        }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        .toc-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 24px;
+        }
+        .toc-pill {
+            padding: 6px 14px;
+            background: #f3f4f6;
+            color: #4b5563;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .toc-pill:hover {
+            background: #7c3aed;
+            color: white;
+        }
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 Alphabrew Help</h1>
+            <p>Yardım ve Destek / Help and Support</p>
+            <div>
+                <a href="privacy.html" class="nav-link">🔒 Privacy</a>
+                <a href="terms.html" class="nav-link">📄 Terms</a>
+                <a href="index.html" class="nav-link">🏠 Ana Sayfa</a>
+            </div>
+        </div>
+
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="showLang('tr')">Türkçe</button>
+            <button class="lang-btn" onclick="showLang('en')">English</button>
+        </div>
+
+        <!-- ════════ TURKISH ════════ -->
+        <div id="lang-tr" class="lang-content active">
+            <div class="contact-card">
+                <h2>📧 Hızlı Destek</h2>
+                <p>48 saat içinde yanıtlıyoruz</p>
+                <p style="font-size: 22px; margin-top: 8px;">
+                    <a href="mailto:support@apextype.com">support@apextype.com</a>
+                </p>
+            </div>
+
+            <div class="category">
+                <h2>İçindekiler</h2>
+                <div class="toc-links">
+                    <a href="#tr-oyun" class="toc-pill">🎮 Oyun</a>
+                    <a href="#tr-hesap" class="toc-pill">👤 Hesap</a>
+                    <a href="#tr-satin-alma" class="toc-pill">💳 Satın Alma</a>
+                    <a href="#tr-reklam" class="toc-pill">📺 Reklamlar</a>
+                    <a href="#tr-bildirim" class="toc-pill">🔔 Bildirimler</a>
+                    <a href="#tr-teknik" class="toc-pill">⚙️ Teknik</a>
+                    <a href="#tr-gizlilik" class="toc-pill">🔒 Gizlilik</a>
+                </div>
+            </div>
+
+            <!-- OYUN -->
+            <div class="category" id="tr-oyun">
+                <h2>🎮 Oyun ve İlerleme</h2>
+
+                <div class="faq">
+                    <h3>Nasıl kelime oluştururum?</h3>
+                    <p>Letter wheel (harf çarkı) üzerindeki harfleri parmağınızla birbirine sürükleyip bağlayarak kelime oluşturursunuz. Geçerli bir Türkçe (veya İngilizce) kelimeyse otomatik olarak grid'e yerleştirilir.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Geçerli bir kelime yazdığımı düşünüyorum ama kabul edilmedi. Neden?</h3>
+                    <p>Birkaç olası sebep:</p>
+                    <ul>
+                        <li>Kelime sözlüğümüzde yok — Alphabrew TDK ve standart İngilizce sözlüklerden derlenen kelimeleri kullanır</li>
+                        <li>Kelime mevcut bulmacanın grid'inde yer almıyor (bonus kelime olarak sayılır, potion bottle'ı doldurur)</li>
+                        <li>Çok kısa kelime (3 harften az olamaz)</li>
+                        <li>Özel isim, kısaltma veya uygunsuz olduğu için filtrelenmiş</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>İpucu (hint) nasıl kullanılır?</h3>
+                    <ul>
+                        <li><strong>Harf İpucu (50 coin):</strong> Grid'deki bir harfi açar</li>
+                        <li><strong>Kelime İpucu (150 coin):</strong> Tam bir kelimeyi açar</li>
+                        <li><strong>Karıştırma (Shuffle):</strong> Ücretsiz, harfleri yeniden konumlandırır</li>
+                        <li><strong>Reklam İzle (ücretsiz):</strong> 30 saniyelik bir reklam karşılığında 2 harfi açar</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Yıldız (★) sistemi nasıl çalışır?</h3>
+                    <ul>
+                        <li><strong>1 yıldız:</strong> Bulmacayı tamamla</li>
+                        <li><strong>2 yıldız:</strong> İpucu kullanmadan tamamla</li>
+                        <li><strong>3 yıldız:</strong> İpucu kullanmadan ve zaman sınırı içinde tamamla</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Sonsuz Mod (Endless) nedir?</h3>
+                    <p>Sonu olmayan, ardışık bulmaca akışı. Her bulmacada zorluk biraz artar, her 5'inde +25 coin bonus, her 10'unda özel kelime kartı kazanırsınız. Süre baskısı yok, sadece keyif ve seri (streak) için.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Günlük Görev (Daily Challenge) nasıl çalışır?</h3>
+                    <p>Her gün dünya genelinde tüm Alphabrew oyuncuları için aynı bulmaca sunulur. Süreniz, ipuçlarınız ve yıldızlarınız leaderboard'a yansır. Günde sadece bir kez oynanabilir; ertesi gün yeni bulmaca açılır.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Grimoire (kelime defteri) nedir?</h3>
+                    <p>Oyun süresince keşfettiğiniz tüm kelimelerin saklandığı koleksiyon. Her kelimeye dokunarak tanım, etimoloji ve eğlenceli bir bilgi görebilirsiniz. Hem oyun hem öğrenme.</p>
+                </div>
+            </div>
+
+            <!-- HESAP -->
+            <div class="category" id="tr-hesap">
+                <h2>👤 Hesap ve Senkronizasyon</h2>
+
+                <div class="faq">
+                    <h3>Hesap oluşturmak zorunda mıyım?</h3>
+                    <p>Hayır. Anonim olarak oynayabilirsiniz; verileriniz sadece cihazınızda kalır. Ancak Google veya Apple ile giriş yaparsanız:</p>
+                    <ul>
+                        <li>İlerlemeniz cihazlar arası senkronize olur</li>
+                        <li>Uygulamayı silip yeniden yüklediğinizde kaldığınız yerden devam edersiniz</li>
+                        <li>Yeni telefona geçtiğinizde geri yüklenir</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Google ile Giriş çalışmıyor</h3>
+                    <p>Aşağıdakileri deneyin:</p>
+                    <ol>
+                        <li>Google hesabınızda 2-Faktörlü doğrulama aktif mi kontrol edin</li>
+                        <li>Internet bağlantınızı kontrol edin</li>
+                        <li>Uygulamayı kapatıp yeniden açın</li>
+                        <li>Cihazda Google Play Services güncel mi (Android)</li>
+                        <li>Hâlâ çalışmıyorsa <a href="mailto:support@apextype.com">support@apextype.com</a></li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Apple ile Giriş çalışmıyor</h3>
+                    <p>iOS/macOS dışı cihazlarda Apple Sign-In görünmez. iOS'taysanız:</p>
+                    <ol>
+                        <li>iCloud hesabınızla giriş yaptığınızdan emin olun (Ayarlar → Apple Kimliği)</li>
+                        <li>Internet bağlantınızı kontrol edin</li>
+                        <li>Sorun devam ederse Apple Sign-In yerine Google deneyebilirsiniz</li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Hesabımı nasıl silerim?</h3>
+                    <ol>
+                        <li>Uygulamayı açın</li>
+                        <li>Profile sekmesine gidin</li>
+                        <li>Ayarlar → Hesabımı Sil</li>
+                        <li>Onay diyaloğunda "Sil" tıklayın</li>
+                    </ol>
+                    <div class="warning-box">
+                        <strong>Dikkat:</strong> Bu işlem geri alınamaz. Tüm ilerlemeniz, coin'ler ve satın alımlar silinir. Cloud verisi 30 gün içinde tamamen silinir.
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <h3>İlerlemem kayboldu, ne yapmalıyım?</h3>
+                    <p>Önce şunları deneyin:</p>
+                    <ol>
+                        <li>Uygulamayı kapatıp yeniden açın</li>
+                        <li>Internet'inizi kontrol edin (cloud sync için gerekli)</li>
+                        <li>Doğru hesapla giriş yaptığınızdan emin olun (Google/Apple)</li>
+                        <li>Anonim oynuyorsanız ve uygulamayı sildiyseniz, ilerleme kaybolmuş olabilir (anonim hesaplar cihaza bağlıdır)</li>
+                    </ol>
+                    <p>Bu adımlar çözmediyse <a href="mailto:support@apextype.com">support@apextype.com</a> adresine kullanıcı ID'nizle (Profile ekranında görünür) yazın.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Birden fazla cihazda oynayabilir miyim?</h3>
+                    <p>Evet — Google veya Apple ile giriş yaparsanız ilerlemeniz otomatik senkronize olur. Aynı anda farklı cihazlarda oynarsanız, son cihazda yapılan değişiklikler diğerine yansır (last-write-wins).</p>
+                </div>
+            </div>
+
+            <!-- SATIN ALMA -->
+            <div class="category" id="tr-satin-alma">
+                <h2>💳 Satın Alımlar ve Coin'ler</h2>
+
+                <div class="faq">
+                    <h3>Coin paketleri nelerdir?</h3>
+                    <ul>
+                        <li><strong>Küçük Büyü Torbası:</strong> 500 coin</li>
+                        <li><strong>Orta Büyü Torbası:</strong> 1.200 coin</li>
+                        <li><strong>Büyük Büyü Torbası:</strong> 3.000 coin</li>
+                        <li><strong>Simyacı Sandığı:</strong> 6.000 coin + özel tema</li>
+                    </ul>
+                    <p>Fiyatlar bölgenize göre değişebilir, güncel fiyatları mağaza ekranında görebilirsiniz.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Satın alma yaptım ama coin'ler hesabıma yansımadı</h3>
+                    <ol>
+                        <li>Internet bağlantınızı kontrol edin</li>
+                        <li>Uygulamayı kapatıp yeniden açın</li>
+                        <li>Mağaza ekranında "Satın Alımları Geri Yükle" butonuna tıklayın</li>
+                        <li>Hâlâ olmadıysa <a href="mailto:support@apextype.com">support@apextype.com</a> adresine işlem ID'sini iletin</li>
+                    </ol>
+                    <div class="info-box">
+                        <strong>İşlem ID'si:</strong> Apple/Google'dan gelen onay e-postasında bulunur. Genelde "ABC123XYZ" gibi bir kod.
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <h3>Yeni cihaza geçtim, satın alımlarım nerede?</h3>
+                    <p>Mağaza ekranındaki <strong>"Satın Alımları Geri Yükle"</strong> butonuna tıklayın. Aynı Apple ID veya Google hesabıyla yapılmış tüm satın alımlar otomatik aktarılır.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>İade almak istiyorum</h3>
+                    <p>Satın alımlar Apple App Store veya Google Play Store üzerinden yapıldığı için iadeler de doğrudan oradan yapılır:</p>
+                    <ul>
+                        <li><strong>Apple App Store:</strong> <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a></li>
+                        <li><strong>Google Play Store:</strong> <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">support.google.com/googleplay/answer/2479637</a></li>
+                    </ul>
+                    <p>Detaylı iade kuralları için <a href="terms.html#tr-7">Kullanım Koşulları Bölüm 7</a>.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Coin'lerimi başka birine gönderebilir miyim?</h3>
+                    <p>Hayır. Coin'ler hesabınıza bağlıdır, devredilemez veya başka kullanıcılara hediye edilemez.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Reklamsız sürüm var mı?</h3>
+                    <p>Şu an müstakil "premium ad-free" paketi yok, ancak <strong>Simyacı Sandığı</strong> satın alındığında banner reklamları kaldırılır. Gelecekte ayrı bir "Sadece Reklamsız" paketi eklemeyi planlıyoruz.</p>
+                </div>
+            </div>
+
+            <!-- REKLAM -->
+            <div class="category" id="tr-reklam">
+                <h2>📺 Reklamlar</h2>
+
+                <div class="faq">
+                    <h3>Neden reklam görüyorum?</h3>
+                    <p>Alphabrew ücretsiz oynanabilir. Geliştirme ve sürdürülebilirlik için Google AdMob aracılığıyla reklam gösteriyoruz. Reklamlar olmadan ücretsiz bir oyunu sürdürmek mümkün olmuyor.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Hangi reklam türleri gösteriliyor?</h3>
+                    <ul>
+                        <li><strong>Banner:</strong> Ana menü ve harita ekranlarının altında küçük şerit</li>
+                        <li><strong>Geçiş (Interstitial):</strong> Bölümler arası tam ekran (ilk 5 level reklamsız, sonra her 2-3 levelde bir)</li>
+                        <li><strong>Ödüllü:</strong> İzleyerek 2x coin veya hint kazanabilirsiniz (her zaman opsiyonel)</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Uygunsuz bir reklam gördüm, ne yapayım?</h3>
+                    <p>Reklam içerikleri Google tarafından sunulur ve bizim ön onayımızdan geçmez. Uygun olmayan bir reklam görürseniz reklamın sağ üst köşesindeki <strong>ⓘ</strong> ikonuna dokunup "Bu reklamı kapat" veya "Bu konuyu gösterme" seçebilirsiniz. Google ileride benzer reklamları size göstermez.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Kişiselleştirilmiş reklam istemiyorum</h3>
+                    <ul>
+                        <li><strong>iOS:</strong> Ayarlar → Gizlilik ve Güvenlik → İzleme → Alphabrew "İzin Verme"</li>
+                        <li><strong>Android:</strong> Ayarlar → Google → Reklamlar → "Reklam Kişiselleştirmesini Kapat"</li>
+                    </ul>
+                    <p>Bu ayarla generic (contextual) reklamlar görmeye devam edersiniz ama Google sizin verinizi kullanmaz.</p>
+                </div>
+            </div>
+
+            <!-- BİLDİRİMLER -->
+            <div class="category" id="tr-bildirim">
+                <h2>🔔 Bildirimler</h2>
+
+                <div class="faq">
+                    <h3>Hangi bildirimleri gönderiyorsunuz?</h3>
+                    <ul>
+                        <li><strong>Günlük görev hatırlatması:</strong> "Bugünki büyü seni bekliyor 🧙" (sabah 10:00 local time)</li>
+                        <li><strong>Seri uyarısı:</strong> Streak'iniz tehlikede olduğunda</li>
+                        <li><strong>Geri dönüş:</strong> 3+ gün giriş yapmazsanız bir kez</li>
+                    </ul>
+                    <p>22:00-08:00 arası bildirim göndermiyoruz.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Bildirimleri nasıl kapatırım?</h3>
+                    <p>Uygulama içinden: <strong>Ayarlar → Bildirimler</strong>. Her kategori için ayrı toggle.</p>
+                    <p>Cihaz seviyesinde: iOS Ayarlar → Bildirimler → Alphabrew → Kapalı. Android: Ayarlar → Uygulamalar → Alphabrew → Bildirimler.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Bildirim alamıyorum</h3>
+                    <ol>
+                        <li>İlk açılışta bildirim izni verdiniz mi kontrol edin</li>
+                        <li>Cihaz bildirim ayarlarında Alphabrew için izin açık mı</li>
+                        <li>"Rahatsız Etme" / "Sessiz Mod" aktif olabilir</li>
+                        <li>Internet bağlantınız var mı (push bildirim için gerekli)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- TEKNİK -->
+            <div class="category" id="tr-teknik">
+                <h2>⚙️ Teknik Sorunlar</h2>
+
+                <div class="faq">
+                    <h3>Uygulama çöküyor / donuyor</h3>
+                    <ol>
+                        <li>Uygulamayı tamamen kapatın (recent apps'ten kaldırın) ve yeniden açın</li>
+                        <li>Cihazı yeniden başlatın</li>
+                        <li>Uygulamayı en son sürüme güncelleyin (App Store / Play Store kontrol edin)</li>
+                        <li>Hâlâ çökmesi devam ederse cihaz modeli + OS sürümü ile <a href="mailto:support@apextype.com">support@apextype.com</a></li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Ses çıkmıyor</h3>
+                    <ol>
+                        <li>Cihaz sessizde olmasın</li>
+                        <li>Uygulamadan: Ayarlar → Müzik/Efekt toggle açık mı</li>
+                        <li>Kulaklık varsa çıkarın, yeniden takın</li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Internet olmadan oynayabilir miyim?</h3>
+                    <p>Evet, kampanya seviyelerini internet olmadan oynayabilirsiniz (sözlük cihazda yüklü). Internet sadece şunlar için gerekli:</p>
+                    <ul>
+                        <li>Günlük görev (Daily Challenge)</li>
+                        <li>Bulut senkronizasyonu (giriş yaptıysanız)</li>
+                        <li>Reklamlar</li>
+                        <li>Uygulama içi satın alma</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Hangi cihazlarda çalışıyor?</h3>
+                    <ul>
+                        <li><strong>iOS:</strong> iOS 13 ve üstü (iPhone 6S sonrası)</li>
+                        <li><strong>Android:</strong> Android 7.0 (Nougat) ve üstü</li>
+                        <li><strong>iPad:</strong> Tüm modeller (iOS 13+)</li>
+                        <li><strong>Tablet:</strong> Android tabletler desteklenir</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Dil değiştirmek istiyorum</h3>
+                    <p>Şu an Alphabrew cihaz dilini kullanır (Türkçe veya İngilizce). Uygulama içi dil değiştirici eklemeyi v1.1'de planlıyoruz. Şimdilik cihaz dilini değiştirebilirsiniz: iOS Ayarlar → Genel → Dil ve Bölge, Android Ayarlar → Sistem → Diller.</p>
+                </div>
+            </div>
+
+            <!-- GİZLİLİK -->
+            <div class="category" id="tr-gizlilik">
+                <h2>🔒 Gizlilik ve Veri</h2>
+
+                <div class="faq">
+                    <h3>Hangi verileri topluyorsunuz?</h3>
+                    <p>Detaylı liste için <a href="privacy.html#tr-2">Gizlilik Politikası Bölüm 2</a>.</p>
+                    <p>Özet: Anonim kullanıcı ID, oyun ilerlemesi, çökme raporları, anonim analytics, opsiyonel olarak Google/Apple hesap bilgisi (giriş yaparsanız).</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Verilerimi indirebilir miyim?</h3>
+                    <p>Evet, GDPR/KVKK kapsamında veri taşınabilirliği hakkınız var. <a href="mailto:privacy@apextype.com">privacy@apextype.com</a> adresine yazın, 30 gün içinde JSON formatında verilerinizi gönderiyoruz.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Verilerimi silmek istiyorum</h3>
+                    <p>Uygulama içinden: Profile → Ayarlar → Hesabımı Sil. Daha fazla detay için <a href="privacy.html#tr-8">Privacy Policy Bölüm 8</a>.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>13 yaş altıyım, ne yapmalıyım?</h3>
+                    <p>Alphabrew 13 yaş altı için tasarlanmamıştır. Eğer 13 yaşın altındaysanız lütfen bir ebeveyninize/yasal vasinize danışın. Yanlışlıkla hesap oluşturulduysa <a href="mailto:privacy@apextype.com">privacy@apextype.com</a> adresine yazın, verileri 7 gün içinde sileriz.</p>
+                </div>
+            </div>
+
+            <!-- İLETİŞİM -->
+            <div class="category">
+                <h2>📞 Bize Ulaşın</h2>
+
+                <div class="faq">
+                    <h3>Cevap alamadıysam ne yapayım?</h3>
+                    <p>48 saat içinde yanıt vermeyi hedefliyoruz. Eğer 72 saat geçtiyse:</p>
+                    <ul>
+                        <li>Spam klasörünüzü kontrol edin (cevabımız oraya düşmüş olabilir)</li>
+                        <li>E-posta'yı yeniden gönderin</li>
+                        <li>Konu satırına "TAKIP" yazın</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Hangi e-postaya yazmalıyım?</h3>
+                    <ul>
+                        <li><strong>Genel destek, teknik sorunlar:</strong> <a href="mailto:support@apextype.com">support@apextype.com</a></li>
+                        <li><strong>Gizlilik, veri silme, GDPR/KVKK:</strong> <a href="mailto:privacy@apextype.com">privacy@apextype.com</a></li>
+                        <li><strong>İş birliği, basın:</strong> <a href="mailto:hello@apextype.com">hello@apextype.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Hata raporu / öneri</h3>
+                    <p>Bug raporu veya yeni özellik öneriniz için <a href="mailto:support@apextype.com">support@apextype.com</a> adresine cihaz modeli, OS sürümü ve mümkünse screenshot ile yazın. Geri bildirimleriniz Alphabrew'u geliştirir.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════ ENGLISH ════════ -->
+        <div id="lang-en" class="lang-content">
+            <div class="contact-card">
+                <h2>📧 Quick Support</h2>
+                <p>We respond within 48 hours</p>
+                <p style="font-size: 22px; margin-top: 8px;">
+                    <a href="mailto:support@apextype.com">support@apextype.com</a>
+                </p>
+            </div>
+
+            <div class="category">
+                <h2>Contents</h2>
+                <div class="toc-links">
+                    <a href="#en-gameplay" class="toc-pill">🎮 Gameplay</a>
+                    <a href="#en-account" class="toc-pill">👤 Account</a>
+                    <a href="#en-purchase" class="toc-pill">💳 Purchases</a>
+                    <a href="#en-ads" class="toc-pill">📺 Ads</a>
+                    <a href="#en-notif" class="toc-pill">🔔 Notifications</a>
+                    <a href="#en-tech" class="toc-pill">⚙️ Technical</a>
+                    <a href="#en-privacy" class="toc-pill">🔒 Privacy</a>
+                </div>
+            </div>
+
+            <!-- GAMEPLAY -->
+            <div class="category" id="en-gameplay">
+                <h2>🎮 Gameplay and Progress</h2>
+
+                <div class="faq">
+                    <h3>How do I make words?</h3>
+                    <p>Drag your finger across the letters on the wheel to connect them into a word. If it's a valid Turkish or English word, it will automatically be placed in the grid.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I think I typed a valid word but it wasn't accepted. Why?</h3>
+                    <p>A few possible reasons:</p>
+                    <ul>
+                        <li>The word isn't in our dictionary — Alphabrew uses TDK (Turkish) and standard English dictionaries</li>
+                        <li>The word isn't in the current puzzle's grid (it counts as a bonus word, filling the potion bottle)</li>
+                        <li>Too short (must be at least 3 letters)</li>
+                        <li>Filtered as a proper noun, abbreviation, or inappropriate word</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>How do hints work?</h3>
+                    <ul>
+                        <li><strong>Letter Hint (50 coins):</strong> Reveals one letter in the grid</li>
+                        <li><strong>Word Hint (150 coins):</strong> Reveals a complete word</li>
+                        <li><strong>Shuffle (free):</strong> Rearranges the letters</li>
+                        <li><strong>Watch Ad (free):</strong> Watch a 30-second ad to reveal 2 letters</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>How does the star (★) system work?</h3>
+                    <ul>
+                        <li><strong>1 star:</strong> Complete the puzzle</li>
+                        <li><strong>2 stars:</strong> Complete without using hints</li>
+                        <li><strong>3 stars:</strong> Complete without hints and within the time limit</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>What is Endless mode?</h3>
+                    <p>An infinite stream of puzzles with gradually increasing difficulty. Every 5th puzzle gives +25 coin bonus; every 10th gives a featured word card. No time pressure — just enjoy and build your streak.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>How does Daily Challenge work?</h3>
+                    <p>Every day, the same puzzle is offered to all Alphabrew players worldwide. Your time, hints used, and stars are reflected on the leaderboard. Can only be played once per day; a new puzzle is unlocked the next day.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>What is the Grimoire?</h3>
+                    <p>A collection of every word you've discovered while playing. Tap any word to see its definition, etymology, and a fun fact. Both gameplay and learning.</p>
+                </div>
+            </div>
+
+            <!-- ACCOUNT -->
+            <div class="category" id="en-account">
+                <h2>👤 Account and Sync</h2>
+
+                <div class="faq">
+                    <h3>Do I have to create an account?</h3>
+                    <p>No. You can play anonymously; your data stays only on your device. However, if you sign in with Google or Apple:</p>
+                    <ul>
+                        <li>Your progress syncs across devices</li>
+                        <li>You can continue from where you left off after reinstalling</li>
+                        <li>Restoration when switching to a new phone</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Sign in with Google isn't working</h3>
+                    <p>Try the following:</p>
+                    <ol>
+                        <li>Check if 2-Factor Authentication is active on your Google account</li>
+                        <li>Check your internet connection</li>
+                        <li>Close and reopen the app</li>
+                        <li>Ensure Google Play Services is up to date (Android)</li>
+                        <li>If still not working, contact <a href="mailto:support@apextype.com">support@apextype.com</a></li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Sign in with Apple isn't working</h3>
+                    <p>Apple Sign-In doesn't appear on non-iOS/macOS devices. If you're on iOS:</p>
+                    <ol>
+                        <li>Make sure you're signed into iCloud (Settings → Apple ID)</li>
+                        <li>Check your internet connection</li>
+                        <li>If the issue persists, you can try Google Sign-In instead</li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>How do I delete my account?</h3>
+                    <ol>
+                        <li>Open the App</li>
+                        <li>Go to the Profile tab</li>
+                        <li>Settings → Delete My Account</li>
+                        <li>Tap "Delete" in the confirmation dialog</li>
+                    </ol>
+                    <div class="warning-box">
+                        <strong>Warning:</strong> This action cannot be undone. All your progress, coins, and purchases will be deleted. Cloud data will be fully deleted within 30 days.
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <h3>My progress is lost, what should I do?</h3>
+                    <p>First, try:</p>
+                    <ol>
+                        <li>Close and reopen the app</li>
+                        <li>Check your internet (needed for cloud sync)</li>
+                        <li>Ensure you're signed in with the correct account (Google/Apple)</li>
+                        <li>If you were playing anonymously and uninstalled the app, progress may be lost (anonymous accounts are device-bound)</li>
+                    </ol>
+                    <p>If these don't solve the issue, email <a href="mailto:support@apextype.com">support@apextype.com</a> with your user ID (visible on Profile screen).</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Can I play on multiple devices?</h3>
+                    <p>Yes — if you sign in with Google or Apple, your progress syncs automatically. If you play simultaneously on different devices, changes made on the last device are reflected on the other (last-write-wins).</p>
+                </div>
+            </div>
+
+            <!-- PURCHASES -->
+            <div class="category" id="en-purchase">
+                <h2>💳 Purchases and Coins</h2>
+
+                <div class="faq">
+                    <h3>What are the coin packages?</h3>
+                    <ul>
+                        <li><strong>Small Magic Pouch:</strong> 500 coins</li>
+                        <li><strong>Medium Magic Pouch:</strong> 1,200 coins</li>
+                        <li><strong>Large Magic Pouch:</strong> 3,000 coins</li>
+                        <li><strong>Alchemist's Chest:</strong> 6,000 coins + exclusive theme</li>
+                    </ul>
+                    <p>Prices may vary by region; current prices are visible on the shop screen.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I made a purchase but coins didn't appear in my account</h3>
+                    <ol>
+                        <li>Check your internet connection</li>
+                        <li>Close and reopen the app</li>
+                        <li>Tap "Restore Purchases" on the shop screen</li>
+                        <li>If still not resolved, email <a href="mailto:support@apextype.com">support@apextype.com</a> with your transaction ID</li>
+                    </ol>
+                    <div class="info-box">
+                        <strong>Transaction ID:</strong> Found in the confirmation email from Apple/Google. Usually a code like "ABC123XYZ".
+                    </div>
+                </div>
+
+                <div class="faq">
+                    <h3>I switched to a new device, where are my purchases?</h3>
+                    <p>Tap the <strong>"Restore Purchases"</strong> button on the shop screen. All purchases made with the same Apple ID or Google account will be automatically transferred.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I want a refund</h3>
+                    <p>Since purchases are made through Apple App Store or Google Play Store, refunds must be requested directly from those services:</p>
+                    <ul>
+                        <li><strong>Apple App Store:</strong> <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a></li>
+                        <li><strong>Google Play Store:</strong> <a href="https://support.google.com/googleplay/answer/2479637" target="_blank">support.google.com/googleplay/answer/2479637</a></li>
+                    </ul>
+                    <p>Detailed refund rules in <a href="terms.html#en-7">Terms of Service Section 7</a>.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Can I send coins to someone else?</h3>
+                    <p>No. Coins are tied to your account and cannot be transferred or gifted to other users.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Is there an ad-free version?</h3>
+                    <p>There is no standalone "premium ad-free" package right now, but purchasing the <strong>Alchemist's Chest</strong> removes banner ads. We plan to add a separate "Ad-Free Only" package in the future.</p>
+                </div>
+            </div>
+
+            <!-- ADS -->
+            <div class="category" id="en-ads">
+                <h2>📺 Ads</h2>
+
+                <div class="faq">
+                    <h3>Why am I seeing ads?</h3>
+                    <p>Alphabrew is free to play. To support development and sustainability, we show ads via Google AdMob. Without ads, it wouldn't be possible to keep a free game going.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>What types of ads are shown?</h3>
+                    <ul>
+                        <li><strong>Banner:</strong> Small strip at the bottom of home and map screens</li>
+                        <li><strong>Interstitial:</strong> Full-screen between levels (first 5 levels ad-free, then every 2-3 levels)</li>
+                        <li><strong>Rewarded:</strong> Watch to earn 2x coins or hints (always optional)</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>I saw an inappropriate ad, what should I do?</h3>
+                    <p>Ad content is served by Google and not pre-approved by us. If you see an inappropriate ad, tap the <strong>ⓘ</strong> icon in the top right corner and select "Stop seeing this ad" or "Don't show this topic". Google won't show similar ads in the future.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I don't want personalized ads</h3>
+                    <ul>
+                        <li><strong>iOS:</strong> Settings → Privacy & Security → Tracking → Alphabrew "Don't Allow"</li>
+                        <li><strong>Android:</strong> Settings → Google → Ads → "Turn off ad personalization"</li>
+                    </ul>
+                    <p>With this setting, you'll continue to see generic (contextual) ads, but Google won't use your data.</p>
+                </div>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="category" id="en-notif">
+                <h2>🔔 Notifications</h2>
+
+                <div class="faq">
+                    <h3>What notifications do you send?</h3>
+                    <ul>
+                        <li><strong>Daily challenge reminder:</strong> "Today's spell is waiting 🧙" (10:00 AM local time)</li>
+                        <li><strong>Streak warning:</strong> When your streak is at risk</li>
+                        <li><strong>Re-engagement:</strong> Once if you don't log in for 3+ days</li>
+                    </ul>
+                    <p>We don't send notifications between 22:00 and 08:00.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>How do I turn off notifications?</h3>
+                    <p>From within the app: <strong>Settings → Notifications</strong>. Separate toggle for each category.</p>
+                    <p>At device level: iOS Settings → Notifications → Alphabrew → Off. Android: Settings → Apps → Alphabrew → Notifications.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I'm not receiving notifications</h3>
+                    <ol>
+                        <li>Did you grant notification permission on first launch?</li>
+                        <li>Is permission for Alphabrew enabled in device notification settings?</li>
+                        <li>"Do Not Disturb" / "Silent Mode" might be active</li>
+                        <li>Do you have an internet connection (required for push notifications)?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- TECHNICAL -->
+            <div class="category" id="en-tech">
+                <h2>⚙️ Technical Issues</h2>
+
+                <div class="faq">
+                    <h3>The app crashes / freezes</h3>
+                    <ol>
+                        <li>Close the app completely (remove from recent apps) and reopen</li>
+                        <li>Restart your device</li>
+                        <li>Update the app to the latest version (check App Store / Play Store)</li>
+                        <li>If crashes persist, email <a href="mailto:support@apextype.com">support@apextype.com</a> with device model + OS version</li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>No sound</h3>
+                    <ol>
+                        <li>Make sure the device isn't on silent</li>
+                        <li>From the app: Settings → Music/SFX toggle on</li>
+                        <li>If wearing headphones, remove and reinsert them</li>
+                    </ol>
+                </div>
+
+                <div class="faq">
+                    <h3>Can I play without internet?</h3>
+                    <p>Yes, you can play campaign levels offline (dictionary is loaded on device). Internet is only needed for:</p>
+                    <ul>
+                        <li>Daily Challenge</li>
+                        <li>Cloud synchronization (if signed in)</li>
+                        <li>Ads</li>
+                        <li>In-app purchases</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Which devices are supported?</h3>
+                    <ul>
+                        <li><strong>iOS:</strong> iOS 13 and above (iPhone 6S and later)</li>
+                        <li><strong>Android:</strong> Android 7.0 (Nougat) and above</li>
+                        <li><strong>iPad:</strong> All models (iOS 13+)</li>
+                        <li><strong>Tablet:</strong> Android tablets supported</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>I want to change the language</h3>
+                    <p>Currently, Alphabrew uses the device language (Turkish or English). We plan to add an in-app language switcher in v1.1. For now, you can change the device language: iOS Settings → General → Language & Region, Android Settings → System → Languages.</p>
+                </div>
+            </div>
+
+            <!-- PRIVACY -->
+            <div class="category" id="en-privacy">
+                <h2>🔒 Privacy and Data</h2>
+
+                <div class="faq">
+                    <h3>What data do you collect?</h3>
+                    <p>Detailed list in <a href="privacy.html#en-2">Privacy Policy Section 2</a>.</p>
+                    <p>Summary: Anonymous user ID, game progress, crash reports, anonymous analytics, optionally Google/Apple account info (if you sign in).</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Can I download my data?</h3>
+                    <p>Yes, under GDPR/KVKK you have the right to data portability. Email <a href="mailto:privacy@apextype.com">privacy@apextype.com</a>, and we'll send your data in JSON format within 30 days.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I want to delete my data</h3>
+                    <p>From within the app: Profile → Settings → Delete My Account. For more details, see <a href="privacy.html#en-8">Privacy Policy Section 8</a>.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>I'm under 13, what should I do?</h3>
+                    <p>Alphabrew is not designed for users under 13. If you are under 13, please consult a parent or legal guardian. If an account was created accidentally, email <a href="mailto:privacy@apextype.com">privacy@apextype.com</a> and we will delete the data within 7 days.</p>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="category">
+                <h2>📞 Contact Us</h2>
+
+                <div class="faq">
+                    <h3>What if I don't get a response?</h3>
+                    <p>We aim to respond within 48 hours. If 72 hours have passed:</p>
+                    <ul>
+                        <li>Check your spam folder (our reply may have ended up there)</li>
+                        <li>Resend the email</li>
+                        <li>Put "FOLLOWUP" in the subject line</li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Which email should I write to?</h3>
+                    <ul>
+                        <li><strong>General support, technical issues:</strong> <a href="mailto:support@apextype.com">support@apextype.com</a></li>
+                        <li><strong>Privacy, data deletion, GDPR/KVKK:</strong> <a href="mailto:privacy@apextype.com">privacy@apextype.com</a></li>
+                        <li><strong>Partnership, press:</strong> <a href="mailto:hello@apextype.com">hello@apextype.com</a></li>
+                    </ul>
+                </div>
+
+                <div class="faq">
+                    <h3>Bug report / suggestion</h3>
+                    <p>For bug reports or new feature suggestions, email <a href="mailto:support@apextype.com">support@apextype.com</a> with device model, OS version, and if possible a screenshot. Your feedback improves Alphabrew.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 ApexType. All rights reserved.</p>
+            <p>Alphabrew — Kelime Simyası / Word Alchemy</p>
+        </div>
+    </div>
+
+    <script>
+        function showLang(lang) {
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
